@@ -1,15 +1,18 @@
 public class Solution {
     public string KthDistinct(string[] arr, int k) {
-        var set = new List<string>();
-        foreach(var val in arr)
-        {
-            if(!set.Contains(val))
-                set.Add(val);
+        var freqMap = new Dictionary<string, int>();
+        foreach(var s in arr)
+            if(!freqMap.ContainsKey(s))
+                freqMap[s] = 1;
             else
-                set.Remove(val); 
-        }
-        if(k > set.Count)
+                freqMap[s]++;
+            foreach(var s in arr)
+            {
+                if(freqMap[s] == 1)
+                    k--;
+                if(k==0)
+                    return s;
+            }
             return "";
-        return set[k-1];
     }
 }
