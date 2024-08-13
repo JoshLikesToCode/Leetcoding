@@ -16,14 +16,11 @@ public class Solution {
         for (int i = index; i < candidates.Length; i++) {
             // skip dupes
             if (i > index && candidates[i] == candidates[i - 1]) 
-            {
                 continue;
-            }
+
             // no combo here
             if (candidates[i] > target) 
-            {
                 break;
-            }
 
             curr.Add(candidates[i]);
             BackTrack(i + 1, candidates, target - candidates[i], curr, res);
