@@ -3,21 +3,15 @@ public class Solution {
         var binStr = Convert.ToString(n, 2);
         if(binStr.IndexOf("1") == binStr.LastIndexOf("1"))
             return 0;
-        int start = 0, end = 0;
-        var res = 0;
-        for(var i = 1; i < binStr.Length; i++)
-        {
-            var count = 0;
-            if(binStr[i-1] != binStr[i])
+        int res = 0, count = 1;
+        for(var i = 0; i < binStr.Length; i++)
+            if(binStr[i] == '1')
             {
-                start = i - 1;
-                end = i;
+                res = Math.Max(res, count);
                 count = 1;
-                while(end < binStr.Length - 1 && binStr[++start] != binStr[++end])
-                    count++;
             }
-            res = Math.Max(res, count);
-        }
+            else
+                count++;
         return res;
     }
 }
