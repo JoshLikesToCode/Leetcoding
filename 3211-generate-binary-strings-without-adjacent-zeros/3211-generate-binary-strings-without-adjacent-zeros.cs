@@ -1,11 +1,9 @@
 public class Solution {
-    private IList<string> _res;
-
     public IList<string> ValidStrings(int n) {
-        _res = new List<string>();
+        var res = new List<string>();
         var builder = new StringBuilder();
-        BackTrack(_res, builder, 0, n);
-        return _res;
+        BackTrack(res, builder, 0, n);
+        return res;
     }
 
     public void BackTrack(IList<string> list, StringBuilder builder, int idx, int n)
