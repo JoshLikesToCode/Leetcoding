@@ -1,32 +1,29 @@
 public class Solution {
     public string SortVowels(string s) {
-        var count = new Dictionary<char, int>();
-        var sortedVowel = "AEIOUaeiou";
+        char[] chars = s.ToCharArray();
+        List<char> vowels = new List<char>();
 
-        foreach(var c in sortedVowel)
-            count[c] = 0;
+        foreach (char c in chars) {
+            if (IsVowel(c)) {
+                vowels.Add(c);
+            }
+        }
 
-        foreach(var c in s)
-            if(IsVowel(c))
-                count[c]++;
+        vowels.Sort();
 
-        var res = string.Empty;
-        var idx = 0;
-        for(var i = 0; i < s.Length; i++)
-            if(!IsVowel(s[i]))
-                res += s[i];
-            else
-                {
-                    while(count[sortedVowel[idx]] == 0)
-                        idx++;
-                    res += sortedVowel[idx];
-                    count[sortedVowel[idx]]--;
-                }
-        return res;
+        int vowelIndex = 0;
+        for (int i = 0; i < chars.Length; i++) {
+            if (IsVowel(chars[i])) {
+                chars[i] = vowels[vowelIndex++];
+            }
+        }
+
+        return new string(chars);
     }
 
-    bool IsVowel(char c) {
-        return c == 'a' || c == 'e' || c == 'o'|| c == 'u'|| c == 'i' 
-            || c == 'A' || c == 'E' || c == 'O'|| c == 'U'|| c == 'I';
+     private bool IsVowel(char c) {
+        char lowerC = char.ToLower(c);
+        return lowerC == 'a' || lowerC == 'e' || lowerC == 'i' || lowerC == 'o' || lowerC == 'u';
     }
+
 }
