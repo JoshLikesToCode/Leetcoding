@@ -20,7 +20,7 @@ public class Node {
 public class Solution {
     public IList<int> Postorder(Node root) {
         var res = new List<int>();
-        Stack<Node> stack = new Stack<Node>();
+        var stack = new Stack<Node>();
         if(root == null)
             return res;
         else
