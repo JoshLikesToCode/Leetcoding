@@ -14,9 +14,10 @@ public class Solution {
         var dummy1 = new ListNode(0);
         dummy1.next = head;
         var dummy2 = dummy1;
+        var hs = new HashSet<int>(nums);
         while(dummy2.next != null)
         {
-            if(nums.Contains(dummy2.next.val))
+            if(hs.Contains(dummy2.next.val))
                 dummy2.next = dummy2.next.next;
             else
                 dummy2 = dummy2.next;
