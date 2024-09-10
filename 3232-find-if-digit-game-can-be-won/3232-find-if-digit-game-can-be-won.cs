@@ -1,13 +1,11 @@
 public class Solution {
     public bool CanAliceWin(int[] nums) {
-        int aliceSum = 0, bobSum = 0;
-        foreach(var n in nums)
-        {
-            if(n.ToString().Length >= 2)
-                bobSum += n;
-            else
-                aliceSum += n;
-        }
-        return aliceSum != bobSum;
+        int a = 0, b = 0;
+        nums.ToList().ForEach( x => {
+                if(x.ToString().Length == 1){ a += x; }
+                else { b += x; }
+            }       
+        );
+        return a != b;
     }
 }
