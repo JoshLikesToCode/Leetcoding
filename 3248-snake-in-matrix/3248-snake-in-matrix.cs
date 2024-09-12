@@ -6,18 +6,18 @@ public class Solution {
         for(var i = 0; i < n; i++)
             for(var j = 0; j < n; j++)
                 matrix[i][j] = (i * n) + j;
-        int x = 0, y = 0;
+        int c = 0, r = 0;
         foreach(var cmd in commands)
         {
             if(cmd == "RIGHT")
-                x++;
+                c++;
             else if(cmd == "LEFT")
-                y--;
+                c--;
             else if(cmd == "UP")
-                x--;
+                r--;
             else
-                y++;
+                r++;
         }
-        return matrix[x][y];
+        return matrix[r][c];
     }
 }
