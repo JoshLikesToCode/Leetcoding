@@ -24,7 +24,7 @@ public class CustomStack {
     }
     
     public void Increment(int k, int val) {
-        var kth = Math.Min(k, _stack.Count - 1);
+        var kth = Math.Min(k, _stack.Count);
         for(var i = 0; i < kth; i++)
             _stack[i] += val;
     }
