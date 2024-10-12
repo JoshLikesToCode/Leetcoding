@@ -1,31 +1,20 @@
 public class Solution {
     public double FindMaxAverage(int[] nums, int k) {
-        if(nums.Length == 1)
-            return nums[0];
-        if(k == 1)
-            return nums.Max();
-        if(k == nums.Length)
-            return (double)((double)nums.Sum() / k);
-        int a = 0, b = 1, n = k - 1;
-        double res = 0d;
-        while(b < nums.Length)
+        int start = 1, end = k;
+        double avg = 0d, max = 0d, sum = 0d;
+        for(var i = 0; i < k; i++)
+            sum += nums[i];
+        avg = sum / k;
+        max = avg;
+        while(end < nums.Length)
         {
-            var val = nums[a];
-            a++;
-            while(b < nums.Length)
-            {
-                val += nums[b];
-                n--;
-                if(n == 0)
-                {
-                    res = Math.Max(res, (double)val / k);
-                    b = a + 1;
-                    break;
-                }
-                b++;
-            }
-            n = k - 1;
+            sum += nums[end];
+            sum -= nums[start - 1];
+            avg = sum / k;
+            max = Math.Max(max, avg);
+            start++;
+            end++;
         }
-        return res;
+        return max;
     }
 }
