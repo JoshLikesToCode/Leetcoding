@@ -7,7 +7,7 @@ public class Solution {
                 found = true;
             else if(c == '0' && found)
                 segment = true;
-            if(c is '1' && segment)
+            if(c == '1' && segment)
                 return false;
         }
         return true;
