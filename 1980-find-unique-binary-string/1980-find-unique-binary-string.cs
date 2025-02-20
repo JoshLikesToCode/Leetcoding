@@ -6,7 +6,7 @@ public class Solution {
         for(var n = 0; n <= nums.Length; n++)
             if(!hs.Contains(n))
             {
-                var res = Convert.ToString(n, 2).ToString();
+                var res = Convert.ToString(n, 2);
                 while(res.Length < nums.Length)
                     res = "0" + res;
                 return res;
